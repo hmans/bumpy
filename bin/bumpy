@@ -33,7 +33,9 @@ Dir['./lib/**/version.rb'].each do |name|
     contents.sub!(EXPR, "VERSION = \"#{opts[:new_version]}\"")
 
     unless opts[:dryrun]
-      File.write(name, contents)
+      File.open(name, 'w+') do |f|
+        f.write(contents)
+      end
 
       # create git commit
       if File.exists?('./.git') && !opts[:no_git]
