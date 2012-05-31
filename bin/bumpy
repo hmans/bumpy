@@ -12,14 +12,12 @@ Usage: bumpy [options] [version]
 Available Options:
 EOS
 
-
   opt :dryrun, "Dry run (no writing or committing)"
   opt :no_git, "Don't automatically create git commit"
 end
 
 EXPR = %r{VERSION = ['"](.+)['"]}
 opts[:new_version] = ARGV.shift
-
 
 Dir['./lib/**/version.rb'].each do |name|
   contents = File.read(name)
@@ -45,6 +43,6 @@ Dir['./lib/**/version.rb'].each do |name|
 
     break
   end
-
-  puts "No version file found. :("
 end
+
+puts "No version file found. :("
