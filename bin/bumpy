@@ -42,7 +42,8 @@ Dir['./lib/**/version.rb'].each do |name|
       end
     end
 
-    break
+    # done!
+    exit 0
   end
 end
 
