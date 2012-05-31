@@ -17,14 +17,14 @@ EOS
   opt :no_git, "Don't automatically create git commit"
 end
 
-EXPR = %r{VERSION = ['"]((.*)(\d+))['"]}
+EXPR = %r{VERSION = ['"](.+)['"]}
 opts[:new_version] = ARGV.shift
 
 Dir['./lib/**/version.rb'].each do |name|
   contents = File.read(name)
   if contents =~ EXPR
     opts[:new_version] ||= begin
-      "#{$2}#{$3.to_i + 1}"
+      $1.next
     end
 
     puts "Bumping version number found in #{name} to #{opts[:new_version]}"
