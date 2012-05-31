@@ -4,11 +4,8 @@ require 'trollop'
 opts = Trollop::options do
   version "bumpy 0.0.1 by Hendrik Mans"
 
-  opt :dryrun, "Dry run (don't write new version file)"
-  # opt :monkey, "Use monkey mode"                     # flag --monkey, default false
-  # opt :goat, "Use goat mode", :default => true       # flag --goat, default true
-  # opt :num_limbs, "Number of limbs", :default => 4   # integer --num-limbs <i>, default to 4
-  # opt :num_thumbs, "Number of thumbs", :type => :int # integer --num-thumbs <i>, default nil
+  opt :dryrun, "Dry run (no writing or committing)"
+  opt :no_git, "Don't automatically create git commit"
 end
 
 EXPR = %r{VERSION = ['"](.+)['"]}
@@ -31,7 +28,7 @@ Dir['./lib/**/version.rb'].each do |name|
       File.write(name, contents)
 
       # create git commit
-      if File.exists?('./.git')
+      if File.exists?('./.git') && !opts[:no_git]
         puts "Creating git commit"
         system "git add #{name} && git commit -m 'Bump version to #{opts[:new_version]}'"
       end
