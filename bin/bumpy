@@ -1,8 +1,9 @@
 #!/usr/bin/env ruby
 require 'trollop'
+require 'bumpy'
 
 opts = Trollop::options do
-  version "bumpy 0.0.1 by Hendrik Mans"
+  version "bumpy #{Bumpy::VERSION} by Hendrik Mans"
 
   opt :dryrun, "Dry run (no writing or committing)"
   opt :no_git, "Don't automatically create git commit"
