@@ -4,8 +4,8 @@ require File.expand_path('../lib/bumpy/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Hendrik Mans"]
   gem.email         = ["hendrik@mans.de"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Bumpy bumps your gem's version number.}
+  gem.summary       = %q{Bumpy bumps your gem's version number.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
