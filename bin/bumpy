@@ -15,6 +15,7 @@ EOS
 
   opt :dryrun, "Dry run (no writing or committing)"
   opt :no_git, "Don't automatically create git commit"
+  opt :message, "Supply a git commit message (%s is replaced with bumped version number)", :type => :string
 end
 
 EXPR = %r{VERSION = ['"](.+)['"]}
@@ -35,8 +36,8 @@ Dir['./lib/**/version.rb'].each do |name|
 
       # create git commit
       if File.exists?('./.git') && !opts[:no_git]
-        puts "Creating git commit"
-        system "git add #{name} && git commit -m 'Bump version to #{opts[:new_version]}'"
+        opts[:message] ||= "Bump version to #{opts[:new_version]}"
+        system "git add #{name} && git commit -m '#{opts[:message] % opts[:new_version]}'"
       end
     end
 
