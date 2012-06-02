@@ -23,9 +23,7 @@ opts[:new_version] = ARGV.shift
 Dir['./lib/**/version.rb'].each do |name|
   contents = File.read(name)
   if contents =~ EXPR
-    opts[:new_version] ||= begin
-      $1.next
-    end
+    opts[:new_version] ||= Bumpy.bump_version($1)
 
     puts "Bumping version number found in #{name} to #{opts[:new_version]}"
     contents.sub!(EXPR, "VERSION = \"#{opts[:new_version]}\"")
