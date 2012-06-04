@@ -24,4 +24,14 @@ For a complete list of options, run:
 
 Enjoy. :)
 
-- Hendrik Mans, http://hmans.io
+## Version history
+
+### 1.0.0
+
+- New option: --message (or -m), allowing you to specify the git commit message. You can use "%s" in your message as a placeholder for the new version number (eg. `bumpy -m "Released version %s"`).
+- Compatibility with Ruby 1.8.7. Ahem.
+- Add specs and fixed a bunch of bugs.
+
+### 0.1.0
+
+- Initial release.
