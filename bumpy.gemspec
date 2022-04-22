@@ -15,7 +15,7 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Bumpy::VERSION
 
-  gem.add_dependency 'trollop'
+  gem.add_dependency 'optimist'
 
   gem.add_development_dependency 'rake'
   gem.add_development_dependency 'rspec'

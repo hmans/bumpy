@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
 require 'rubygems'
-require 'trollop'
+require 'optimist'
 require 'bumpy'
 
-opts = Trollop::options do
+opts = Optimist::options do
   version "bumpy #{Bumpy::VERSION} by Hendrik Mans"
   banner <<-EOS
 Bumpy bumps your gem's version number.
